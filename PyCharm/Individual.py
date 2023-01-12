@@ -2,18 +2,23 @@
 # -*- coding: utf-8 -*-
 
 import math
+import sys
 
-def sum(*a):
+
+def summator(*a):
     if a:
         min_i = a.index(min(a))
         if min_i != len(a)-1:
             return math.fsum(a[min_i+1:])
         else:
-            return "Дальше элементов нет"
+            return None
     else:
-        return "None"
+        return None
 
 
 if __name__ == "__main__":
-    print(f"Сумма аргуметов после мин.: {sum(42, 15, 33, 10, 12, 12, 11)}")
-
+    answer = summator(42, 15, 33, 10, 12, 12)
+    if answer is None:
+        print(f"Невозможно вычислить", file=sys.stderr)
+    else:
+        print(f"Сумма аргуметов после мин.: {answer}")
